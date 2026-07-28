@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -10,9 +10,12 @@ def homepage():
 def perfil():
   return render_template("perfil.html")
 
-@app.route("/login")
+@app.route("/login",methods=["GET","POST"])
 def login():
-  return render_template("login.html")
+  if request.method == "GET":
+    return render_template("login.html")
+  if request.method == "POST":
+    return "Dados do cadastro recebidos"
 
 @app.route("/cadastro")
 def cadastro():

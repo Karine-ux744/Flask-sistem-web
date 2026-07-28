@@ -1,4 +1,27 @@
 {% extends "base.html" %} {% block titulo_pagina %} Login {% endblock %} {%
 block body %}
-<h1>Essa é a página de login. Ela herdou a estrutura do arquivo base.</h1>
+<p>Entrar</p>
+<form action="{{url_for('login')}}" method="POST">
+  <label for="email">Email:</label>
+  <input
+    type="email"
+    name="email"
+    id="email"
+    placeholder="Digite seu e-mail aqui"
+    required
+  />
+  <label for="senha">Senha:</label>
+  <input
+    type="password"
+    name="senha"
+    id="senha"
+    placeholder="Digite sua senha aqui"
+    required
+  />
+  <button type="submit">Entrar</button>
+</form>
+
+<p>Ainda não possui conta?</p>
+<button>Cadastrar</button>
+
 {% endblock %}
