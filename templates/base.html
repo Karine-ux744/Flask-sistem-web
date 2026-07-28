@@ -6,6 +6,13 @@
     <title>{% block titulo_pagina %}{% endblock %}</title>
   </head>
   <body>
+    <header>
+      <nav>
+        <a href="{{url_for('homepage')}}">Home</a>
+        <a href="{{url_for('login')}}">Login</a>
+        <a href="{{url_for('cadastro')}}">Cadastro</a>
+      </nav>
+    </header>
     {% block body %}{% endblock %}
   </body>
 </html>
