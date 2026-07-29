@@ -1,4 +1,40 @@
 {% extends "base.html" %} {% block titulo_pagina %} Cadastro {% endblock %} {%
 block body %}
-<h1>Essa é a página de cadastro. Ela herdou a estrutura do arquivo base.</h1>
+<form action="{{url_for('cadastro')}}" method="POST">
+  <label for="nome">Nome:</label>
+  <input
+    type="text"
+    name="nome"
+    id="nome"
+    placeholder="Digite seu nome"
+    required
+  />
+  <label for="sobrenome">Sobrenome</label>
+  <input
+    type="text"
+    name="sobrenome"
+    id="sobrenome"
+    placeholder="Digite seu sobrenome"
+    required
+  />
+  <label for="email">E-mail:</label>
+  <input type="email" name="email" id="email" placeholder="Digite seu e-mail" />
+  <label for="senha">Senha:</label>
+  <input
+    type="password"
+    name="senha"
+    id="senha"
+    placeholder="Digite sua senha"
+    required
+  />
+  <label for="confirmacao_senha">Confirme a senha:</label>
+  <input
+    type="password"
+    name="confirmacao_senha"
+    id="confirmacao_senha"
+    placeholder="Digite a mesma senha"
+    required
+  />
+  <button type="submit">Criar conta</button>
+</form>
 {% endblock %}
