@@ -1,0 +1,87 @@
+body {
+  background-color: #f8f9fa;
+  color: rgb(0, 0, 39);
+}
+
+.fundo-azul-escuro {
+  background-color: rgb(0, 0, 39);
+}
+
+.secao-hero {
+  width: fit-content;
+  margin-top: 2.5rem;
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
+.secao-hero p:first-of-type,
+span {
+  color: rgb(8, 8, 129);
+}
+.secao-hero p:first-child {
+  background-color: rgba(177, 177, 250, 0.712);
+  width: fit-content;
+  border-radius: 1rem;
+}
+.secao-hero p:nth-of-type(2) {
+  margin-top: 1rem;
+}
+
+.titulo-hero {
+  font-size: 4rem;
+  width: fit-content;
+  line-height: 3.5rem;
+}
+
+.secao-tecnologias {
+  background-color: rgb(236, 236, 255);
+}
+.titulo-secao-tecnologias {
+  column-gap: 1rem;
+}
+
+.logos-tecnologias {
+  column-gap: 1rem;
+}
+.logo-tecnologias {
+  width: 8rem;
+  box-shadow: 0 0 3px #7575757e;
+  border-radius: 5px;
+  padding: 1rem;
+}
+
+.logo-tecnologias {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.logo-tecnologias:hover {
+  transform: scale(1.05);
+}
+.logo-tecnologias p {
+  font-weight: bold;
+}
+.logo-tecnologias img {
+  width: 80px;
+  height: 80px;
+}
+.logo-sqlalchemy img {
+  box-shadow: 0 0 0 0;
+  border-radius: 0;
+  padding: 0;
+  width: 100px;
+}
+.secao-funcionalidades {
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
+.container-funcionalidades i {
+  color: rgb(8, 8, 129);
+}
+.col-esq-funcionalidades div,
+.col-dir-funcionalidades div {
+  background-color: rgb(236, 236, 255);
+  width: 100%;
+  margin-top: 0.5rem;
+  border-radius: 5px;
+}

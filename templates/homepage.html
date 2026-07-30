@@ -1,39 +1,126 @@
 {%extends "base.html"%} {% block titulo_pagina %} Página inicial {% endblock %}
 {% block body %}
-<section>
-  <h1>Sistema web com Flask</h1>
-  <h2>Aprenda como funciona uma aplicação web desenvolvida com Flask</h2>
-</section>
-<section>
-  <h2>Tecnologias usadas</h2>
-  <p>
-    <p>Python</p>
-    <p>Flask</p>
-    <p>SQLAlchemy</p>
-    <p>SQLLite</p>
-    <p>Bootstrap</p>
-    <p>Jinja2</p>
-  </p>
-</section>
-<section>
-  <h2>O que você verá aqui:</h2>
-  <p>✔ Cadastro de usuários</p>
-  <p>✔ Login seguro</p>
-  <p>✔ Senhas protegidas</p>
-  <p>✔ Sessão de usuário</p>
-  <p>✔ Áreas públicas</p>
-  <p>✔ Áreas protegidas</p>
-  <p>✔ Banco de dados SQLite</p>
-  <p>✔ SQLAlchemy</p>
-  <p>✔ Herança de templates</p>
-  <p>✔ Interface responsiva</p>
-  <p>✔ Bootstrap</p>
-  <p>✔ Flask-Login</p>
-</section>
-<section>
-  <a href="{{url_for('login')}}">Fazer login</a>
-  <a href="{{url_for('cadastro')}}">Criar conta</a>
-</section>
+<main>
+  <section
+    class="secao-hero d-flex justify-content-between align-items-center py-3"
+  >
+    <div class="d-flex flex-column">
+      <p class="rounded-pill px-2 py-1">Sistema web</p>
+      <h1 class="titulo-hero">Framework Flask <span>na prática</span></h1>
+      <p class="">
+        Um projeto completo que demonstra como funciona uma aplicação web
+        desenvolvida com o framework Flask, do cadastro ao login, com segurança
+        e boas práticas.
+      </p>
+    </div>
+    <img
+      src="/static/img/logo flask no notebook.png"
+      alt="Notebook com a logo do Flask como papel de parede"
+      class="w-50"
+    />
+  </section>
+  <section class="secao-tecnologias d-flex flex-column align-items-center py-5">
+    <div class="d-flex align-items-center titulo-secao-tecnologias fs-1">
+      <i class="bi bi-stack"></i>
+      <h2>Tecnologias usadas</h2>
+    </div>
+    <p>Ferramentas modernas para um desenvolvimento eficiente e profissional</p>
+    <div class="logos-tecnologias d-flex justify-content-center w-100">
+      <div class="logo-tecnologias">
+        <img src="/static/img/icons8-python-480.svg" />
+        <p>Python</p>
+      </div>
+      <div class="logo-tecnologias">
+        <img src="/static/img/icons8-flask-500.svg" />
+        <p>Flask</p>
+      </div>
+      <div class="logo-tecnologias logo-sqlalchemy">
+        <img
+          src="/static/img/ChatGPT Image Jul 30, 2026, 02_59_41 AM.png"
+          class="align-self-center"
+        />
+        <p class="align-self-center">SQLAlchemy</p>
+      </div>
+      <div class="logo-tecnologias">
+        <img src="/static/img/sqlite.png" />
+        <p>SQLite</p>
+      </div>
+      <div class="logo-tecnologias">
+        <img src="/static/img/bootstrap.svg" />
+        <p>Bootstrap</p>
+      </div>
+      <div class="logo-tecnologias">
+        <img src="/static/img/jinja-svgrepo-com.svg" />
+        <p>Jinja2</p>
+      </div>
+    </div>
+  </section>
+  <section
+    class="secao-funcionalidades d-flex flex-column justify-content-center align-items-center py-3"
+  >
+    <h2>O que você verá aqui:</h2>
+    <div
+      class="container-funcionalidades d-flex justify-content-between column-gap-5 w-100"
+    >
+      <div class="col-esq-funcionalidades row-gap-3 w-50">
+        <div class="d-flex align-items-center column-gap-1 px-2 py-1">
+          <i class="bi bi-check-circle-fill"></i>
+          <p class="fw-semibold mb-0">Cadastro de usuários</p>
+        </div>
+        <div class="d-flex align-items-center column-gap-1 px-2 py-1">
+          <i class="bi bi-check-circle-fill"></i>
+          <p class="fw-semibold mb-0">Login seguro</p>
+        </div>
+        <div class="d-flex align-items-center column-gap-1 px-2 py-1">
+          <i class="bi bi-check-circle-fill"></i>
+          <p class="fw-semibold mb-0">Senhas protegidas</p>
+        </div>
+        <div class="d-flex align-items-center column-gap-1 px-2 py-1">
+          <i class="bi bi-check-circle-fill"></i>
+          <p class="fw-semibold mb-0">Sessão de usuário</p>
+        </div>
+        <div class="d-flex align-items-center column-gap-1 px-2 py-1">
+          <i class="bi bi-check-circle-fill"></i>
+          <p class="fw-semibold mb-0">Áreas públicas</p>
+        </div>
+        <div class="d-flex align-items-center column-gap-1 px-2 py-1">
+          <i class="bi bi-check-circle-fill"></i>
+          <p class="fw-semibold mb-0">Áreas protegidas</p>
+        </div>
+      </div>
+      <div class="col-dir-funcionalidades w-50">
+        <div class="d-flex align-items-center column-gap-1 px-2 py-1">
+          <i class="bi bi-check-circle-fill"></i>
+          <p class="fw-semibold mb-0">Banco de dados SQLite</p>
+        </div>
+        <div class="d-flex align-items-center column-gap-1 px-2 py-1">
+          <i class="bi bi-check-circle-fill"></i>
+          <p class="fw-semibold mb-0">SQLAlchemy</p>
+        </div>
+        <div class="d-flex align-items-center column-gap-1 px-2 py-1">
+          <i class="bi bi-check-circle-fill"></i>
+          <p class="fw-semibold mb-0">Herança de templates</p>
+        </div>
+        <div class="d-flex align-items-center column-gap-1 px-2 py-1">
+          <i class="bi bi-check-circle-fill"></i>
+          <p class="fw-semibold mb-0">Interface responsiva</p>
+        </div>
+        <div class="d-flex align-items-center column-gap-1 px-2 py-1">
+          <i class="bi bi-check-circle-fill"></i>
+          <p class="fw-semibold mb-0">Bootstrap</p>
+        </div>
+        <div class="d-flex align-items-center column-gap-1 px-2 py-1">
+          <i class="bi bi-check-circle-fill"></i>
+          <p class="fw-semibold mb-0">Flask-Login</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="px-5 py-3">
+    <a href="{{url_for('login')}}">Fazer login</a>
+    <a href="{{url_for('cadastro')}}">Criar conta</a>
+  </section>
+</main>
 <footer></footer>
 
 {% endblock %}
