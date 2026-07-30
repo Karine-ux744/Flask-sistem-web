@@ -3,6 +3,11 @@ body {
   color: rgb(0, 0, 39);
   font-family: "Inter", sans-serif;
 }
+section,
+footer {
+  padding-left: 8rem;
+  padding-right: 8rem;
+}
 
 .fundo-azul-escuro {
   background-color: rgb(0, 0, 39);
@@ -11,8 +16,6 @@ body {
 .secao-hero {
   width: fit-content;
   margin-top: 2.5rem;
-  padding-left: 8rem;
-  padding-right: 8rem;
 }
 .rounded-pill,
 span {
@@ -89,10 +92,7 @@ span {
   padding: 0;
   width: 100px;
 }
-.secao-funcionalidades {
-  padding-left: 8rem;
-  padding-right: 8rem;
-}
+
 .container-funcionalidades i {
   color: rgb(8, 8, 129);
 }
@@ -115,4 +115,13 @@ span {
   justify-content: center;
   align-items: center;
   color: rgb(8, 8, 129);
+}
+
+footer {
+  color: #f8f9fa;
+  font-weight: 100;
+}
+footer a {
+  text-decoration: none;
+  color: #f8f9fa;
 }

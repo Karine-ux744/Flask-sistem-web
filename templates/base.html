@@ -51,6 +51,47 @@
       </nav>
     </header>
     {% block body %}{% endblock %}
+    <footer
+      class="fundo-azul-escuro d-flex justify-content-center column-gap2 py-2"
+    >
+      <div
+        class="d-flex flex-column justify-content-start align-items-start w-100"
+      >
+        <a
+          href="{{url_for('homepage')}}"
+          class="d-flex justify-content-between align-items-center column-gap-2 text-white text-decoration-none"
+          ><i class="bi bi-rocket-takeoff fs-3"></i>
+          <p class="d-flex mb-0 fw-bold fs-3">Flask System</p></a
+        >
+
+        <p>Um projeto educacional para aprender Flask do zero ao avançado.</p>
+        <div>
+          <i class="bi bi-github"></i>
+          <i class="bi bi-linkedin"></i>
+          <i class="bi bi-envelope-at-fill"></i>
+          <i class="bi bi-whatsapp"></i>
+        </div>
+      </div>
+      <div
+        class="d-flex flex-column justify-content-start align-items-start w-100"
+      >
+        <p class="fw-semibold">Navegação</p>
+        <a href="#">Início</a>
+        <a href="#">Sobre</a>
+        <a href="#">Recursos</a>
+        <a href="#">Tecnologias</a>
+      </div>
+      <div
+        class="d-flex flex-column justify-content-start align-items-start w-100"
+      >
+        <p class="fw-semibold">Recursos</p>
+        <a href="#">Documentação</a>
+        <a href="#">GitHub</a>
+        <a href="#">Contato</a>
+        <a href="#"></a>
+      </div>
+      <hr />
+    </footer>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </html>
