@@ -76,8 +76,13 @@ span {
   align-items: center;
   justify-content: center;
 }
-.logo-tecnologias:hover {
+.logo-tecnologias:hover,
+a:hover,
+footer i:hover {
   transform: scale(1.05);
+}
+.logo:hover {
+  transform: none;
 }
 .logo-tecnologias p {
   font-weight: bold;
