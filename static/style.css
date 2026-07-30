@@ -1,6 +1,7 @@
 body {
   background-color: #f8f9fa;
   color: rgb(0, 0, 39);
+  font-family: "Inter", sans-serif;
 }
 
 .fundo-azul-escuro {
@@ -31,21 +32,21 @@ span {
   width: fit-content;
   line-height: 3.5rem;
 }
-.botao-login {
+.botoes-login a {
   color: rgb(0, 0, 39);
   border: 1px solid rgb(0, 0, 206);
   border-radius: 5px;
 }
 
-.botao-login:hover {
+.botoes-login a:hover {
   background-color: rgb(0, 0, 206);
   color: #f8f9fa;
 }
-.login-secao-hero a:nth-of-type(1) {
+.botoes-login a:nth-of-type(1) {
   background-color: rgb(0, 0, 206);
   color: #f8f9fa;
 }
-.login-secao-hero a:nth-of-type(1):hover {
+.botoes-login a:nth-of-type(1):hover {
   background-color: rgb(0, 0, 105);
   color: #f8f9fa;
 }
@@ -95,10 +96,23 @@ span {
 .container-funcionalidades i {
   color: rgb(8, 8, 129);
 }
+
 .col-esq-funcionalidades div,
-.col-dir-funcionalidades div {
+.col-dir-funcionalidades div,
+.container-login-funcionalidades {
   background-color: rgb(236, 236, 255);
   width: 100%;
   margin-top: 0.5rem;
   border-radius: 5px;
+}
+.container-login-funcionalidades > i {
+  background-color: #f8f9fa;
+  border-radius: 50%;
+  font-size: 2rem;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(8, 8, 129);
 }

@@ -12,7 +12,7 @@
         desenvolvida com o framework Flask, do cadastro ao login, com segurança
         e boas práticas.
       </p>
-      <div class="login-secao-hero d-flex column-gap-1">
+      <div class="botoes-login d-flex column-gap-1">
         <a
           href="{{url_for('login')}}"
           class="botao-login d-flex column-gap-1 align-items-center text-decoration-none p-1"
@@ -21,8 +21,8 @@
           <p class="mb-0">Fazer login</p>
         </a>
         <a
-          href="{{url_for('login')}}"
-          class="botao-login d-flex column-gap-1 align-items-center text-decoration-none p-1"
+          href="{{url_for('cadastro')}}"
+          class="d-flex column-gap-1 align-items-center text-decoration-none p-1"
         >
           <i class="bi bi-person-plus"></i>
           <p class="mb-0">Criar conta</p>
@@ -74,7 +74,7 @@
   <section
     class="secao-funcionalidades d-flex flex-column justify-content-center align-items-center py-3"
   >
-    <h2>O que você verá aqui:</h2>
+    <h2 class="fw-bold">O que você verá aqui:</h2>
     <div
       class="container-funcionalidades d-flex justify-content-between column-gap-5 w-100"
     >
@@ -131,19 +131,32 @@
         </div>
       </div>
     </div>
-    <div>
+    <div class="container-login-funcionalidades d-flex align-items-center justify-content-evenly w-100 py-2 mt-4">
       <i class="bi bi-rocket-takeoff-fill"></i>
-      <div>
-        <p>Pronto para começar?</p>
-        <p>
-          Crie sua conta gratuitamente e explore todos os recursos do sistema
+      <div class="d-flex flex-column justify-content-center titulo-login-funcionalidades ">
+        <p class="fw-semibold mb-0">Pronto para começar?</p>
+        <p class="mb-0">
+          Crie sua conta gratuitamente e explore todos os recursos do sistema.
         </p>
       </div>
+      <div class="botoes-login d-flex column-gap-1">
+        <a
+          href="{{url_for('cadastro')}}"
+          class="botao-login d-flex column-gap-1 align-items-center text-decoration-none p-1"
+        >
+          <i class="bi bi-person-plus"></i>
+          <p class="mb-0">Criar conta</p>
+        </a>
+        <a
+          href="{{url_for('login')}}"
+          class="botao-login d-flex column-gap-1 align-items-center text-decoration-none p-1"
+        >
+          <i class="bi bi-box-arrow-in-right"></i></i>
+          <p class="mb-0">Fazer login</p>
+        </a>
+        
+      </div>
     </div>
-  </section>
-  <section class="px-5 py-3">
-    <a href="{{url_for('login')}}">Fazer login</a>
-    <a href="{{url_for('cadastro')}}">Criar conta</a>
   </section>
 </main>
 <footer></footer>
