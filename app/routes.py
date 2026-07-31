@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request
+from app import app
+from flask import request,render_template
 
-app = Flask(__name__)
 
 @app.route("/")
 def homepage():
@@ -23,6 +23,3 @@ def cadastro():
     return render_template("cadastro.html")
   if request.method == "POST":
     return "Dados para criar conta recebidos."
-
-if __name__ == "__main__":
-  app.run(debug=True)
