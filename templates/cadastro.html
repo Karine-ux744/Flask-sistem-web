@@ -1,40 +1,94 @@
 {% extends "base.html" %} {% block titulo_pagina %} Cadastro {% endblock %} {%
 block body %}
-<form action="{{url_for('cadastro')}}" method="POST">
-  <label for="nome">Nome:</label>
-  <input
-    type="text"
-    name="nome"
-    id="nome"
-    placeholder="Digite seu nome"
-    required
-  />
-  <label for="sobrenome">Sobrenome</label>
-  <input
-    type="text"
-    name="sobrenome"
-    id="sobrenome"
-    placeholder="Digite seu sobrenome"
-    required
-  />
-  <label for="email">E-mail:</label>
-  <input type="email" name="email" id="email" placeholder="Digite seu e-mail" />
-  <label for="senha">Senha:</label>
-  <input
-    type="password"
-    name="senha"
-    id="senha"
-    placeholder="Digite sua senha"
-    required
-  />
-  <label for="confirmacao_senha">Confirme a senha:</label>
-  <input
-    type="password"
-    name="confirmacao_senha"
-    id="confirmacao_senha"
-    placeholder="Digite a mesma senha"
-    required
-  />
-  <button type="submit">Criar conta</button>
-</form>
+<section
+  class="secaologin-paginalogin d-flex justify-content-between align-items-center py-3"
+>
+  <div class="d-flex flex-column w-50">
+    <p class="titulo-menor-hero rounded-pill px-2 py-1">
+      Sistema web com Flask
+    </p>
+    <h1 class="titulo-hero fs-1 fw-bold">Acesse <span>sua conta</span></h1>
+    <p class="">
+      Faça login para conhecer as funcionalidades de uma aplicação web
+      desenvolvida com o framework Flask.
+    </p>
+    <img
+      src="/static/img/logo flask no notebook.png"
+      alt="Notebook com a logo do Flask como papel de parede"
+      class="w-100"
+    />
+  </div>
+  <div
+    class="containerlogin-paginalogin d-flex flex-column align-items-center w-50 px-4 py-3"
+  >
+    <i class="icone-usuario bi bi-person-fill"></i>
+    <p class="mb-0 fw-bold fs-1">Criar conta</p>
+    <p>Preencha os dados abaixo para criar a sua conta</p>
+    <form
+      action="{{url_for('cadastro')}}"
+      method="POST"
+      class="forms-paginalogin d-flex flex-column w-100 row-gap-2"
+    >
+      <div class="d-flex">
+        <div>
+          <label for="nome">Nome:</label>
+          <input
+            type="text"
+            name="nome"
+            id="nome"
+            placeholder="Digite seu nome"
+            required
+          />
+        </div>
+        <div>
+          <label for="sobrenome">Sobrenome:</label>
+          <input
+            type="text"
+            name="sobrenome"
+            id="sobrenome"
+            placeholder="Digite seu sobrenome"
+            required
+          />
+        </div>
+      </div>
+      <label for="email">E-mail:</label>
+      <input
+        type="email"
+        name="email"
+        id="email"
+        placeholder="Digite seu e-mail"
+      />
+      <label for="senha">Senha:</label>
+      <input
+        type="password"
+        name="senha"
+        id="senha"
+        placeholder="Digite sua senha"
+        required
+      />
+      <label for="confirmacao_senha">Confirme a senha:</label>
+      <input
+        type="password"
+        name="confirmacao_senha"
+        id="confirmacao_senha"
+        placeholder="Digite a senha novamente"
+        required
+      />
+      <button
+        type="submit"
+        class="btn btn-primary d-flex justify-content-center align-items-center column-gap-1 mt-4"
+      >
+        <i class="bi bi-person-plus"></i>
+        <p class="mb-0">Criar conta</p>
+      </button>
+    </form>
+    <div
+      class="d-flex d-flex justify-content-center align-items-center column-gap-1 mt-4"
+    >
+      <p class="mb-0">Já possui uma conta?</p>
+      <a href="{{url_for('login')}}">Fazer login</a>
+    </div>
+  </div>
+</section>
+
 {% endblock %}
