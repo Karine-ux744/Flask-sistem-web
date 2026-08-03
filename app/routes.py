@@ -15,11 +15,11 @@ def login():
   if request.method == "GET":
     return render_template("login.html")
   if request.method == "POST":
-    return "Dados do cadastro recebidos"
+    return f"Você enviou os seguintes dados: {request.form}"
 
 @app.route("/cadastro",methods=["GET","POST"])
 def cadastro():
   if request.method == "GET":
     return render_template("cadastro.html")
   if request.method == "POST":
-    return "Dados para criar conta recebidos."
+    return f"Você enviou os seguintes dados: {request.form}"
