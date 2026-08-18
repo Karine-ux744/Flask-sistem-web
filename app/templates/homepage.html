@@ -160,3 +160,18 @@
   </section>
 </main>
 {% endblock %}
+{% block login_navbar %}
+  <div class="d-flex column-gap-3">
+    <a
+      href="{{url_for('login')}}"
+      class="text-white text-decoration-none btn btn-outline-primary"
+      >Login</a
+    >
+    <a
+      href="{{url_for('cadastro')}}"
+      class="text-white text-decoration-none btn btn-primary"
+      >Criar conta</a
+    >
+  </div>
+{% endblock %}
+          

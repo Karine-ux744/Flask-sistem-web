@@ -6,4 +6,3 @@ class Usuario(database.Model):
   sobrenome = database.Column(database.String(100),nullable=False)
   email = database.Column(database.String(150),nullable=False,unique=True)
   senha = database.Column(database.String(300),nullable=False)
-  confirmacao_senha = database.Column(database.String(300),nullable=False)

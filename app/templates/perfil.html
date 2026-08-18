@@ -1,4 +1,12 @@
 {% extends "base.html" %} {% block titulo_pagina %} Perfil {% endblock %} {%
 block body %}
-<h1>Essa é a página de perfil. Ela herdou a estrutura do arquivo base.</h1>
+<h1>Olá, {{usuario.nome}}! Você está dentro do seu perfil.</h1>
+{% endblock %} {% block login_navbar %}
+<div class="d-flex column-gap-3">
+  <a
+    href="{{url_for('logout')}}"
+    class="text-white text-decoration-none btn btn-outline-primary"
+    >Sair</a
+  >
+</div>
 {% endblock %}
