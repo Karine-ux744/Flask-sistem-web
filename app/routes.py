@@ -8,7 +8,6 @@ from werkzeug.security import generate_password_hash,check_password_hash
 
 @app.route("/")
 def homepage():
-  
   return render_template("homepage.html")
 
 @app.route("/login",methods=["GET","POST"])
@@ -27,12 +26,9 @@ def login():
       return redirect(url_for('cadastro'))
     elif check_password_hash(usuario.senha,senha_login):
       session["usuario_id"] = usuario.id
-      return redirect(url_for("perfil"))
+      return redirect(url_for("perfil",usuario=usuario))
     else:
       return "Senha incorreta, tente novamente."
-    
-
-
 
 @app.route("/cadastro",methods=["GET","POST"])
 def cadastro():
@@ -80,19 +76,29 @@ def cadastro():
     database.session.commit()
 
     return redirect(url_for("login"))
-    
 
-@app.route("/perfil")
+@app.route("/perfil",methods=["GET","POST"])
 def perfil():
-  usuario_id = session.get("usuario_id")
-  if not usuario_id:
-    return redirect(url_for("login"))
+    usuario_id = session.get("usuario_id")
 
-  usuario = database.session.get(Usuario,session["usuario_id"])
+    if not usuario_id:
+        return redirect(url_for("login"))
 
-  return render_template("perfil.html",usuario=usuario)
+    usuario = database.session.get(Usuario, usuario_id)
+
+    if request.method == "POST":
+        feedback = request.form["feedback"]
+        print(feedback)
+
+    return render_template("perfil.html", usuario=usuario)
 
 @app.route("/logout")
 def logout():
+  usuario_id = session.get("usuario_id")
+  print("O usuário está logado mas está saindo")
+
+  if not usuario_id:
+    return redirect(url_for("login"))
   session.pop("usuario_id",None)
+  print("O usuário não está logado mais")
   return redirect(url_for("homepage"))

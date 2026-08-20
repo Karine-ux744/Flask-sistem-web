@@ -1,7 +1,5 @@
 {% extends "base.html" %} {% block titulo_pagina %} Perfil {% endblock %} {%
-block body %}
-<h1>Olá, {{usuario.nome}}! Você está dentro do seu perfil.</h1>
-{% endblock %} {% block login_navbar %}
+block login_navbar %}
 <div class="d-flex column-gap-3">
   <a
     href="{{url_for('logout')}}"
@@ -9,4 +7,202 @@ block body %}
     >Sair</a
   >
 </div>
+{% endblock %} {% block body %}
+<div class="d-flex gap-3">
+  <section
+    class="barra-lateral-perfil d-flex flex-column align-items-start border px-4 py-5"
+  >
+    <div class="d-flex align-items-center mb-5">
+      <i class="bi bi-code-square" style="font-size: 2rem"></i>
+      <p class="fw-bold mb-0">Projeto Flask</p>
+    </div>
+    <div>
+      <i class="bi bi-house-door"></i>
+      <p>Visão geral</p>
+    </div>
+    <div>
+      <i class="bi bi-person"></i>
+      <p>Perfil</p>
+    </div>
+    <!-- <div>
+      <i class="bi bi-code-square"></i>
+      <p>Habilidades</p>
+    </div> -->
+    <div>
+      <i class="bi bi-archive"></i>
+      <p>Projetos</p>
+    </div>
+    <!-- <div>
+      <i class="bi bi-layers"></i>
+      <p>Conceitos & Tecnologias</p>
+    </div> -->
+    <!-- <div>
+      <i class="bi bi-play-btn"></i>
+      <p>Demonstrações</p>
+    </div> -->
+    <!-- <div>
+      <i class="bi bi-chat-left-heart"></i>
+      <p>Feedback</p>
+    </div>
+    <div>
+      <i class="bi bi-bell"></i>
+      <p>Interações</p>
+    </div> -->
+    <div>
+      <i class="bi bi-info-circle"></i>
+      <p>Sobre o Projeto</p>
+    </div>
+    <div>
+      <i class="bi bi-send"></i>
+      <p>Contato</p>
+    </div>
+  </section>
+  {%block conteudo_perfil %}
+  <div class="d-flex flex-column row-gap-3 ml-3">
+    <section class="d-flex justify-content-end">
+      <i class="bi bi-bell"></i>
+      <p>{{usuario.nome[:2].upper()}}</p>
+      <i class="bi bi-caret-down"></i>
+    </section>
+    <section>
+      <div class="d-flex">
+        <p class="mb-0">Olá, {{usuario.nome}}! 👋</p>
+      </div>
+      <p>
+        Bem-vindo(a) ao meu perfil. Aqui você pode conhecer meu trabalho e
+        deixar seu feedback.
+      </p>
+    </section>
+    <section class="d-flex justify-content-between border rounded-2">
+      <p class="mb-0">{{usuario.nome[:2].upper()}}</p>
+      <div>
+        <p class="mb-0">{{usuario.nome}}</p>
+        <div class="d-flex column-gap-1">
+          <i class="bi bi-envelope-at"></i>
+          <p>{{usuario.email}}</p>
+        </div>
+      </div>
+      <div>
+        <div class="d-flex column-gap-1 btn btn-outline-primary">
+          <i class="bi bi-pencil"></i>
+          <a href="#" class="mb-0">Editar perfil</a>
+        </div>
+        <div class="d-flex column-gap-1 btn btn-outline-danger">
+          <i class="bi bi-trash"></i>
+          <p class="mb-0">Excluir conta</p>
+        </div>
+      </div>
+    </section>
+    <section class="d-flex flex-wrap border rounded-2">
+      <div>
+        <p class="mb-0">O que você pode ver aqui</p>
+        <p>
+          Este perfil foi criado para demonstrar minhas habilidades com Flask e
+          como desenvolvo aplicações web
+        </p>
+      </div>
+      <div class="d-flex flex-column row-gap-1">
+        <i class="bi bi-code-slash"></i>
+        <p class="bold align-self-center">Desenvolvimento com Flask</p>
+        <p class="align-self-center">
+          Aplicações web completas usando Flask, Jinja2, Bootstrap, Blueprints e
+          boas práticas.
+        </p>
+      </div>
+      <div class="d-flex flex-column row-gap-1">
+        <i class="bi bi-database"></i>
+        <p class="bold align-self-center">CRUD & Banco de Dados</p>
+        <p class="align-self-center">
+          Operações completas com SQLAlchemy e SQLite.
+        </p>
+      </div>
+      <div class="d-flex flex-column row-gap-1">
+        <i class="bi bi-lock"></i>
+        <p class="bold align-self-center">Autenticação</p>
+        <p class="align-self-center">
+          Sistema de cadastro, login, logout e rotas protegidas com sessões.
+        </p>
+      </div>
+      <div class="d-flex flex-column row-gap-1">
+        <i class="bi bi-shield-shaded"></i>
+        <p class="bold align-self-center">Validação & Segurança</p>
+        <p class="align-self-center">
+          Validações de formulários, tratamento de erros e proteção de dados.
+        </p>
+      </div>
+      <div class="d-flex flex-column row-gap-1">
+        <i class="bi bi-phone"></i>
+        <p class="bold align-self-center">Interface Responsiva</p>
+        <p class="align-self-center">
+          Layouts modernos com Bootstrap 5 e design adaptável.
+        </p>
+      </div>
+      <div class="d-flex flex-column row-gap-1">
+        <i class="bi bi-chat-left"></i>
+        <p class="bold align-self-center">Mensagens Flash</p>
+        <p class="align-self-center">
+          Feedback dinâmico para o usuário em todas as ações.
+        </p>
+      </div>
+      <div class="d-flex flex-column row-gap-1">
+        <i class="bi bi-file-code"></i>
+        <p class="bold align-self-center">Organização do código</p>
+        <p class="align-self-center">
+          Código modularizado com Blueprints e estrutura profissional.
+        </p>
+      </div>
+      <div class="d-flex flex-column row-gap-1">
+        <i class="bi bi-git"></i>
+        <p class="bold align-self-center">Boas práticas</p>
+        <p class="align-self-center">
+          Git, commits convencionais, README e organização de projeto.
+        </p>
+      </div>
+    </section>
+    <section>
+      <div>
+        <p class="fw-bold">Deixe seu feedback</p>
+        <p>Sua opinião é muito importante para o meu crescimento!</p>
+        <p class="fw-bold mb-0">Mensagem personalizada</p>
+        <form action="{{url_for('perfil')}}" method="POST">
+          <input
+            name="feedback"
+            id="feedback"
+            placeholder="Escreva seu feedback, sugestão, elogio ou crítica..."
+            type="text"
+          />
+          <button type="submit">Enviar feedback</button>
+        </form>
+      </div>
+      <div>
+        <p>Feedback rápido</p>
+        <p>Clique em uma das opções abaixo:</p>
+        <div>
+          <p>Excelente trabalho!</p>
+        </div>
+        <div>
+          <p>Muito bom!</p>
+        </div>
+        <div>
+          <p>Pode melhorar em alguns pontos.</p>
+        </div>
+        <div>
+          <p>Encontrei um problema.</p>
+        </div>
+      </div>
+    </section>
+    <section class="d-flex justify-content-center px-3 py-1">
+      <div class="d-flex column-gap-1">
+        <i class="bi bi-chat-left-heart"></i>
+        <p>Vamos construir algo ainda melhor juntos!</p>
+      </div>
+      <div class="d-flex column-gap-1">
+        <i class="bi bi-envelope-at-fill"></i>
+        <p>Fale comigo</p>
+      </div>
+    </section>
+  </div>
+  {% endblock %}
+</div>
+
 {% endblock %}
