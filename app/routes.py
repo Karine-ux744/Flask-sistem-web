@@ -1,104 +1,64 @@
-from app import app
-from flask import request,render_template,url_for,redirect, session
+from app import app,bcrypt
+from flask import render_template,url_for,redirect
+from flask_login import login_required,current_user,login_user,logout_user
 from app.models import Usuario
 from app.database import database
-import re
-from werkzeug.security import generate_password_hash,check_password_hash
-
+from app.forms import FazerLogin,Cadastrar,EditarPerfil
 
 @app.route("/")
 def homepage():
   return render_template("homepage.html")
 
-@app.route("/login",methods=["GET","POST"])
-def login():
-  if request.method == "GET":
-    return render_template("login.html")
-  elif request.method == "POST":
-    senha_login = request.form["senha"].strip()
-    email_login = request.form["email"].strip()
-
-    consulta = database.select(Usuario).where(Usuario.email==email_login)
-    resultado_consulta = database.session.execute(consulta)
-    usuario = resultado_consulta.scalar_one_or_none()
-
-    if not usuario:
-      return redirect(url_for('cadastro'))
-    elif check_password_hash(usuario.senha,senha_login):
-      session["usuario_id"] = usuario.id
-      return redirect(url_for("perfil",usuario=usuario))
-    else:
-      return "Senha incorreta, tente novamente."
-
 @app.route("/cadastro",methods=["GET","POST"])
 def cadastro():
-  if request.method == "GET":
-    return render_template("cadastro.html")
-  elif request.method == "POST":
-    nome = request.form["nome"].strip()
-    sobrenome = request.form["sobrenome"].strip()
-    email = request.form["email"].strip()
-    senha = request.form["senha"].strip()
-    confirmacao_senha = request.form["confirmacao_senha"].strip()
-    dados = [nome,sobrenome,email,senha,confirmacao_senha]
-
-   #nome só aceita letras, espaço, acento e limite de caracteres
-    padrao_nome = re.search(r"^[a-zA-ZÀ-ÖØ-öø-ÿ ]{1,50}$",nome)
-   #sobrenome a mesma coisa do nome
-    padrao_sobrenome = re.search(r"^[a-zA-ZÀ-ÖØ-öø-ÿ ]{1,50}$",sobrenome)
-   #senha deve ter pelo menos 1 maiúscula, pelo menos 1 minúscula, pelo menos 1 carcter especial, pelo menos 1 número, pelo menos 8 carcteres
-    padrao_senha = re.fullmatch(r"(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%&*])(?=.*\d)[a-zA-Z\d!@#$%&*]{8,}",senha)
-   #senha e confirmacao_senha devem ser iguais
-    if "" in dados:
-      return "Preencha todos campos!"
-    if senha != confirmacao_senha:
-      return "As senhas devem ser iguais."
-   #email deve estar no formato de email
-    padrao_email = re.fullmatch(r"[^@\s]+@[^@\s]+\.[^@\s]+",email)
-    if not padrao_nome:
-      return"Por favor, insira um nome válido."
-    if not padrao_sobrenome:
-      return"Por favor, insira uma sobrenome válido."
-    if not padrao_senha:
-      return"Por favor, insira uma senha válida."
-    if not padrao_email:
-      return"Por favor, insira um email válido."
-    
-    consulta = database.select(Usuario).where(Usuario.email==email)
-    resultado_consulta = database.session.execute(consulta)
-    usuario_cadastrado = resultado_consulta.scalar_one_or_none()
-    if usuario_cadastrado:
-      return "Esse e-mail já está cadastrado. Faça o login para entrar"
-
-    hash_senha = generate_password_hash(senha)
-    usuario_novo = Usuario(nome=nome,sobrenome=sobrenome,email=email,senha=hash_senha)
-    database.session.add(usuario_novo)
+  form_cadastro = Cadastrar()
+  if form_cadastro.validate_on_submit():
+    if Usuario.query.filter_by(email=form_cadastro.email.data).first():
+      return redirect(url_for("login"))
+    senha = bcrypt.generate_password_hash(form_cadastro.senha.data)
+    usuario = Usuario(nome=form_cadastro.nome.data,sobrenome=form_cadastro.sobrenome.data,email=form_cadastro.email.data,senha=senha)
+    database.session.add(usuario)
     database.session.commit()
 
     return redirect(url_for("login"))
+    
+  return render_template("cadastro.html",form=form_cadastro)
 
-@app.route("/perfil",methods=["GET","POST"])
-def perfil():
-    usuario_id = session.get("usuario_id")
+@app.route("/login",methods=["GET","POST"])
+def login():
+  form_login=FazerLogin()
+  if form_login.validate_on_submit():
+    usuario = Usuario.query.filter_by(email=form_login.email.data).first()
+    if usuario and bcrypt.check_password_hash(usuario.senha,form_login.senha.data):
+      login_user(usuario,remember=True)
+      return redirect(url_for("perfil",usuario=usuario.nome))
+    
+    return redirect(url_for("cadastro"))
+    
+  return render_template("login.html",form=form_login)
 
-    if not usuario_id:
-        return redirect(url_for("login"))
+@login_required
+@app.route("/perfil/<usuario>")
+def perfil(usuario):
+  return render_template("perfil.html")
 
-    usuario = database.session.get(Usuario, usuario_id)
+@login_required
+@app.route("/perfil/editar",methods=["GET","POST"])
+def editar_perfil():
+  form_editar_perfil = EditarPerfil()
+  if form_editar_perfil.validate_on_submit():
+    usuario = current_user
+    usuario.nome = form_editar_perfil.nome.data
+    usuario.sobrenome = form_editar_perfil.sobrenome.data
+    usuario.email = form_editar_perfil.email.data
+    senha = bcrypt.genterate_password_hash(form_editar_perfil.senha.data)
+    usuario.senha = senha
 
-    if request.method == "POST":
-        feedback = request.form["feedback"]
-        print(feedback)
-
-    return render_template("perfil.html", usuario=usuario)
+    database.session.commit()
+    return redirect(url_for("perfil",usuario=usuario.nome))
+  return render_template("editar_perfil.html",form=form_editar_perfil)
 
 @app.route("/logout")
 def logout():
-  usuario_id = session.get("usuario_id")
-  print("O usuário está logado mas está saindo")
-
-  if not usuario_id:
-    return redirect(url_for("login"))
-  session.pop("usuario_id",None)
-  print("O usuário não está logado mais")
+  logout_user()
   return redirect(url_for("homepage"))

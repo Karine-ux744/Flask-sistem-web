@@ -25,33 +25,11 @@ block body %}
     <p class="mb-0 fw-bold fs-1">Login</p>
     <p>Entre na sua conta para continuar</p>
     <form
-      action="{{url_for('login')}}"
       method="POST"
       class="forms-paginalogin d-flex flex-column w-100 row-gap-2"
     >
-      <label for="email">Email:</label>
-      <input
-        type="email"
-        name="email"
-        id="email"
-        placeholder="Digite seu e-mail aqui"
-        required
-      />
-      <label for="senha">Senha:</label>
-      <input
-        type="password"
-        name="senha"
-        id="senha"
-        placeholder="Digite sua senha aqui"
-        required
-      />
-      <button
-        type="submit"
-        class="btn btn-primary d-flex justify-content-center align-items-center column-gap-1 mt-4"
-      >
-        <i class="bi bi-box-arrow-in-right"></i>
-        <p class="mb-0">Entrar</p>
-      </button>
+      {{form.csrf_token}} {{form.email.label()}} {{form.email()}}
+      {{form.senha.label()}} {{form.senha()}} {{form.botao_enviar()}}
     </form>
     <div
       class="d-flex d-flex justify-content-center align-items-center column-gap-1 mt-4"

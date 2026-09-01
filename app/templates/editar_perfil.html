@@ -1,0 +1,39 @@
+{% extends "base.html" %} {% block body %}
+<div class="d-flex flex-column w-50 m-auto border rounded-2 px-4 py-4 h-100">
+  <div>
+    <p class="mb-0 fw-bold fs-3">Editar Perfil</p>
+    <p>Atualize suas informações pessoais.</p>
+  </div>
+  <form
+    action="{{url_for('editar_perfil')}}"
+    method="POST"
+    class="d-flex flex-column row-gap-3"
+  >
+    <div class="d-flex flex-column">
+      <label for="novo_nome">Nome</label>
+      <input name="novo_nome" id="novo_nome" type="text" />
+    </div>
+    <div class="d-flex flex-column">
+      <label for="novo_sobrenome">Sobrenome</label>
+      <input name="novo_sobrenome" id="novo_sobrenome" type="text" />
+    </div>
+    <div class="d-flex flex-column">
+      <label for="email">E-mail</label>
+      <input name="novo_email" id="email" type="text" />
+    </div>
+
+    <div>
+      <button type="submit" class="mb-0 btn btn-primary">
+        Salvar alterações
+      </button>
+      <a
+        href="{{url_for('perfil',usuario=current_user.nome)}}"
+        class="btn btn-outline-secondary"
+        style="color: black; transform: none; background-color: none"
+      >
+        Cancelar
+      </a>
+    </div>
+  </form>
+</div>
+{%endblock%}

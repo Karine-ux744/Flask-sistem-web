@@ -40,6 +40,7 @@ span {
   font-size: 4rem;
   width: fit-content;
   line-height: 3.5rem;
+  font-weight: 600;
 }
 .botoes-login a {
   color: rgb(0, 0, 39);
@@ -158,6 +159,7 @@ footer a {
   justify-content: center;
   align-items: center;
 }
+
 .barra-lateral-perfil i {
   font-size: 1.3rem;
   display: flex;
