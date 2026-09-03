@@ -4,3 +4,4 @@ __pycache__/
 .env
 site.db
 ver_db.py
+criar_db.py
