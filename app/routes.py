@@ -48,10 +48,13 @@ def editar_perfil():
   form_editar_perfil = EditarPerfil()
   if form_editar_perfil.validate_on_submit():
     usuario = current_user
-    usuario.nome = form_editar_perfil.nome.data
-    usuario.sobrenome = form_editar_perfil.sobrenome.data
-    usuario.email = form_editar_perfil.email.data
-    senha = bcrypt.genterate_password_hash(form_editar_perfil.senha.data)
+    if form_editar_perfil.nome.data:
+      usuario.nome = form_editar_perfil.nome.data
+    if form_editar_perfil.sobrenome.data:
+      usuario.sobrenome = form_editar_perfil.sobrenome.data
+    if form_editar_perfil.email.data:
+      usuario.email = form_editar_perfil.email.data
+    senha = bcrypt.generate_password_hash(form_editar_perfil.senha.data).decode('utf-8')
     usuario.senha = senha
 
     database.session.commit()
