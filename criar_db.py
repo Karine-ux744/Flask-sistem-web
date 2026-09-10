@@ -1,6 +1,7 @@
 from app.database import database
 from app import app 
 from app.models import Usuario
+import os
 
 url_database = os.environ.get('DATABASE_URL')
 if url_database and url_database.startswith("postgres://"):
