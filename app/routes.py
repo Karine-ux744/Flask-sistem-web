@@ -15,7 +15,7 @@ def cadastro():
   if form_cadastro.validate_on_submit():
     if Usuario.query.filter_by(email=form_cadastro.email.data).first():
       return redirect(url_for("login"))
-    senha = bcrypt.generate_password_hash(form_cadastro.senha.data)
+    senha = bcrypt.generate_password_hash(form_cadastro.senha.data).decode('utf-8')
     usuario = Usuario(nome=form_cadastro.nome.data,sobrenome=form_cadastro.sobrenome.data,email=form_cadastro.email.data,senha=senha)
     database.session.add(usuario)
     database.session.commit()
